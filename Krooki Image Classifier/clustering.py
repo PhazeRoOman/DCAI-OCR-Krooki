@@ -60,8 +60,17 @@ class Cluster(object):
         data['class'] = model.labels_
         data['image_name'] = self.df.image_name
         self.classified = data
-        
-    def read_csv(self, path):
+    
+    def genrate_clusters_from_csv(self):
+        model = self.km_model
+        self.df = pd.read_csv(".outputs/20210930-074401_unclassified_df.csv")
+        data = self.df[['noise', 'rot_ratio', 'background']]
+        model.fit(data)
+        data['class'] = model.labels_
+        data['image_name'] = self.df.image_name
+        self.classified = data
+
+    def read_classified_csv(self, path):
         model = self.km_model
         df = pd.read_csv(path)
         self.df = df
@@ -82,8 +91,7 @@ class Cluster(object):
         utils.generate_plotly_plot(self.classified, model.cluster_centers_)
         
 c = Cluster()
-c.generate_clusters()
-c.pp.save_df()
+c.genrate_clusters_from_csv()
 c.plot_model_3d_interactive()
 c.plot_model_PCA_static()
 c.save_classified_df()

@@ -1,5 +1,5 @@
 
-## About The Projec
+## About the Project
 
 
 [Data-Centric AI (DCAI)](https://www.youtube.com/watch?v=06-AZXmwHjo&ab_channel=DeepLearningAI) represents the recent transition from focusing on modeling to the underlying data used to train and evaluate models. Increasingly, common model architectures have begun to dominate a wide range of tasks, and predictable scaling rules have emerged. While building and using datasets has been critical to these successes, the endeavor is often artisanal -- painstaking and expensive. The community lacks high productivity and efficient open data engineering tools to make building, maintaining, and evaluating datasets easier, cheaper, and more repeatable. The DCAI movement aims to address this lack of tooling, best practices, and infrastructure for managing data in modern ML systems.

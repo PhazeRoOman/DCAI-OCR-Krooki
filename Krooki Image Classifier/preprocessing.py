@@ -61,7 +61,7 @@ class PreProcsses(object):
     def __init__(self):
         self.df = pd.DataFrame(columns=['image_name', 'noise', 'rot_ratio', 
                                 'background'])
-        self.folder_path = '../../DCAI/all_imgs/'
+        self.folder_path = './data/imgs/'
         self.normilized_df = None
         
         

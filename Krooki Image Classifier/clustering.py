@@ -52,7 +52,7 @@ class Cluster(object):
         timestr = time.strftime("%Y%m%d-%H%M%S")
         self.classified.to_csv("./outputs/" + timestr + path)  
         
-    def generate_clusters(self):
+    def generate_clusters_from_imgs(self):
         model = self.km_model
         self.df = self.pp.generate_df()
         data = self.df[['noise', 'rot_ratio', 'background']]
@@ -61,9 +61,9 @@ class Cluster(object):
         data['image_name'] = self.df.image_name
         self.classified = data
     
-    def genrate_clusters_from_csv(self):
+    def generate_clusters_from_csv(self):
         model = self.km_model
-        self.df = pd.read_csv(".outputs/20210930-074401_unclassified_df.csv")
+        self.df = pd.read_csv("./outputs/20210930-074401_unclassified_df.csv")
         data = self.df[['noise', 'rot_ratio', 'background']]
         model.fit(data)
         data['class'] = model.labels_
@@ -90,8 +90,3 @@ class Cluster(object):
         model = self.km_model
         utils.generate_plotly_plot(self.classified, model.cluster_centers_)
         
-c = Cluster()
-c.genrate_clusters_from_csv()
-c.plot_model_3d_interactive()
-c.plot_model_PCA_static()
-c.save_classified_df()
